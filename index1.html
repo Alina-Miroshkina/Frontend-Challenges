@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Контейнер формы */
+        .popup {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Заголовок */
+        .popup h2 {
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Поля ввода и кнопка */
+        .popup input[type="email"],
+        .popup input[type="password"],
+        .popup input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box; /* Добавлено для корректного расчета ширины */
+        }
+
+        .popup input[type="email"]:focus,
+        .popup input[type="password"]:focus {
+            border-color: #ffc107;
+            box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+            outline: none;
+        }
+
+        /* Кнопка отправки */
+        .popup input[type="submit"] {
+            background-color: #ffc107;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 15px; /* Добавлен отступ сверху */
+        }
+
+        .popup input[type="submit"]:hover {
+            background-color: #e0a800;
+            transform: scale(1.02);
+        }
+
+        .popup input[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        /* Дополнительная информация */
+        .popup .additional-info {
+            font-size: 12px;
+            color: #666;
+            margin: 15px 0;
+            line-height: 1.5;
+            text-align: left; /* Выравнивание текста по левому краю */
+            padding: 0 10px; /* Добавлены отступы по бокам */
+        }
+
+        /* Ссылка "Войти" */
+        .popup .forgot-password {
+            font-size: 14px;
+            color: #ffc107;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin-top: 15px; /* Добавлен отступ сверху */
+            display: block; /* Чтобы ссылка занимала всю ширину */
+        }
+
+        .popup .forgot-password:hover {
+            color: #e0a800;
+            text-decoration: underline;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 400px) {
+            .popup {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .popup h2 {
+                font-size: 20px;
+            }
+
+            .popup input[type="email"],
+            .popup input[type="password"],
+            .popup input[type="submit"] {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .popup .additional-info {
+                font-size: 10px;
+            }
+
+            .popup .forgot-password {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup">
+        <h2>Регистрация</h2>
+        <form>
+            <input type="email" placeholder="alexander@mail.com" required>
+            <input type="password" placeholder="Пароль" required>
+            <div class="additional-info">
+                Регистрируясь на сайте, вы соглашаетесь с нашими Правилами и Политикой конфиденциальности и соглашаетесь на информационную рассылку.
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+        <div class="forgot-password">
+            Войти
+        </div>
+    </div>
+</body>
+</html>
