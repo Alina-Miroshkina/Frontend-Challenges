@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отдыхайте прямо сейчас! Выгодно!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Секция о компании -->
+        <section class="about">
+            <h1>Лучшие предложения для отдыха 2025</h1>
+            <p>Акции</p>
+            <p>Специальные предложения</p>
+            <div class="services">
+                <div class="service">
+                    <img src="./image/111111.jpg" alt="">
+                    <h2>Хиты продаж</h2>
+                </div>
+                <div class="service">
+                    <img src="./image/111111111.jpg" alt="">
+                    <h2>УНИКАЛЬНЫЕ ПРЕДЛОЖЕНИЯ ТОЛЬКО ДЛЯ ИЗБРАННЫХ ПУТЕШЕСТВЕННИКОВ. СТАНЬТЕ ОДНИМ ИЗ НИХ!</h2>
+                </div>
+                <div class="service">
+                    <img src="./image/11111111111111111.jpg" alt="">
+                    <h2>Туристам</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция с карточками -->
+        <section class="features">
+            <div class="feature">
+                <img src="./image/222222.jpg" alt="">
+                <h2>Внутренний туризм — это тренд</h2>
+                <p>Сервисы для путешественников</p>
+                <button class="details-btn" onclick="toggleDetails('details1')">Подробнее</button>
+                <div id="details1" class="details">
+                    <p>Дополнительная информация о поддержке валют и карт.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <img src="./image/2222222222.jpg" alt="">
+                <h2>Лучшие предложения!</h2>
+                <p>Агентствам.</p>
+                <button class="details-btn" onclick="toggleDetails('details2')">Подробнее</button>
+                <div id="details2" class="details">
+                    <p>Выгодные цены.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <img src="./image/333333.jpg" alt="">
+                <h2>Управление бюджетом осуществляется в облаке</h2>
+                Нужна помощь в подборе тура? Обратитесь в ближайшее к вам агентство или к нашим специалистам по онлайн-бронированию                <button class="details-btn" onclick="toggleDetails('details3')">Подробнее</button>
+                <div id="details3" class="details">
+                    <p>Дополнительная информация об управлении бюджетом в облаке.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
