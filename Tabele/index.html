@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица умножения</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>ТАБЛИЦА УМНОЖЕНИЯ</h1>
+    <div class="table-container">
+        <!-- Таблица 1: от 2 до 5 -->
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4">Умножение от 2 до 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Генерация строк таблицы -->
+                <script>
+                    for (let i = 2; i <= 10; i++) {
+                        document.write(`
+                            <tr>
+                                <td>2 × ${i} = ${2 * i}</td>
+                                <td>3 × ${i} = ${3 * i}</td>
+                                <td>4 × ${i} = ${4 * i}</td>
+                                <td>5 × ${i} = ${5 * i}</td>
+                            </tr>
+                        `);
+                    }
+                </script>
+            </tbody>
+        </table>
+
+        <!-- Таблица 2: от 6 до 9 -->
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4">Умножение от 6 до 9</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Генерация строк таблицы -->
+                <script>
+                    for (let i = 2; i <= 10; i++) {
+                        document.write(`
+                            <tr>
+                                <td>6 × ${i} = ${6 * i}</td>
+                                <td>7 × ${i} = ${7 * i}</td>
+                                <td>8 × ${i} = ${8 * i}</td>
+                                <td>9 × ${i} = ${9 * i}</td>
+                            </tr>
+                        `);
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
