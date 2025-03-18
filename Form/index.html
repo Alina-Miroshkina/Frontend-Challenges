@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма с расширенными возможностями</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Стили для формы */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Стили для заголовков полей */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Стили для полей ввода */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Стили для кнопки */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Стили для сообщений о валидности */
+        .validity {
+            display: block;
+            margin-top: -10px;
+            margin-bottom: 16px;
+            font-size: 0.9em;
+        }
+
+        .validity.error {
+            color: #e74c3c;
+        }
+
+        .validity.success {
+            color: #2ecc71;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            input {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Форма с расширенными возможностями и атрибутами -->
+    <form action="/submit-extended" method="post" novalidate>
+
+        <!-- Поле для ввода текста с проверкой на валидность -->
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required aria-required="true">
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Поле для ввода email с проверкой на валидность -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Поле для ввода URL с проверкой на валидность -->
+        <label for="website">Веб-сайт:</label>
+        <input type="url" id="website" name="website">
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Поле для ввода числа с проверкой на валидность -->
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" min="18" max="99" required>
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Поле для ввода даты с проверкой на валидность -->
+        <label for="birthdate">Дата рождения:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Поле для ввода времени с проверкой на валидность -->
+        <label for="appointment">Время встречи:</label>
+        <input type="time" id="appointment" name="appointment" required>
+        <small class="validity" aria-live="polite"></small>
+
+        <!-- Кнопка для отправки формы -->
+        <button type="submit">Отправить</button>
+
+    </form>
+
+    <script>
+        // JavaScript для проверки валидности полей
+        const form = document.querySelector('form');
+        const validityMessages = form.querySelectorAll('.validity');
+
+        form.addEventListener('input', (event) => {
+            const field = event.target;
+            const validityMessage = field.nextElementSibling;
+
+            if (field.validity.valid) {
+                validityMessage.textContent = "✓ Корректное значение";
+                validityMessage.className = "validity success";
+            } else {
+                validityMessage.textContent = "Пожалуйста, введите корректное значение.";
+                validityMessage.className = "validity error";
+            }
+        });
+
+        form.addEventListener('submit', (event) => {
+            let isFormValid = true;
+            form.querySelectorAll('input').forEach(input => {
+                if (!input.validity.valid) {
+                    isFormValid = false;
+                    input.nextElementSibling.textContent = "Пожалуйста, введите корректное значение.";
+                    input.nextElementSibling.className = "validity error";
+                }
+            });
+
+            if (!isFormValid) {
+                event.preventDefault();
+                alert("Пожалуйста, заполните все поля корректно.");
+            }
+        });
+    </script>
+</body>
+</html>
