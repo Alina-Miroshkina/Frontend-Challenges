@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анкета с подсказками</title>
+  <style>
+    /* Общие стили */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    hr {
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    /* Стили для формы */
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    textarea:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Адаптивность для мобильных устройств */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      form {
+        padding: 15px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        padding: 8px;
+        font-size: 0.9rem;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 title="Заполните анкету, чтобы продолжить">Анкета</h1>
+  <hr>
+  <form action="" method="post">
+    <p>
+      <label for="firstName" title="Введите ваше имя">Имя:</label>
+      <input type="text" id="firstName" name="firstName" required title="Введите ваше имя">
+    </p>
+    <p>
+      <label for="lastName" title="Введите вашу фамилию">Фамилия:</label>
+      <input type="text" id="lastName" name="lastName" required title="Введите вашу фамилию">
+    </p>
+    <p>
+      <label for="password" title="Введите ваш пароль">Пароль:</label>
+      <input type="password" id="password" name="password" required title="Введите ваш пароль">
+    </p>
+    <p>
+      <label for="comment" title="Оставьте ваш комментарий">Комментарий:</label>
+      <textarea id="comment" name="comment" required title="Оставьте ваш комментарий"></textarea>
+    </p>
+    <p>
+      <button type="submit" title="Отправить анкету">Отправить</button>
+    </p>
+  </form>
+
+  <script>
+    // Сложный JavaScript для улучшения функциональности формы
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input, textarea');
+
+    // Функция для проверки валидности поля
+    function validateField(field) {
+      const validityMessage = field.nextElementSibling;
+      if (field.validity.valid) {
+        if (validityMessage) validityMessage.remove();
+      } else {
+        if (!validityMessage || !validityMessage.classList.contains('validity-message')) {
+          const message = document.createElement('small');
+          message.className = 'validity-message';
+          message.textContent = 'Пожалуйста, заполните это поле корректно.';
+          message.style.color = 'red';
+          field.parentNode.insertBefore(message, field.nextSibling);
+        }
+      }
+    }
+
+    // Обработчик события для проверки валидности при вводе
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        validateField(input);
+      });
+    });
+
+    // Обработчик события для проверки валидности при отправке формы
+    form.addEventListener('submit', (event) => {
+      let isFormValid = true;
+      inputs.forEach(input => {
+        validateField(input);
+        if (!input.validity.valid) {
+          isFormValid = false;
+        }
+      });
+
+      if (!isFormValid) {
+        event.preventDefault();
+        alert('Пожалуйста, заполните все поля корректно.');
+      } else {
+        alert('Форма успешно отправлена!');
+      }
+    });
+  </script>
+</body>
+</html>
